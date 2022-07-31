@@ -1,4 +1,6 @@
 package com.example.sportsstore
 
-class MainFragment:SportsFragment() {
+import com.example.sportsstore.common.SportsFragment
+
+class MainFragment: SportsFragment() {
 }
