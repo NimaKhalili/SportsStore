@@ -1,4 +1,4 @@
-package com.example.sportsstore
+package com.example.sportsstore.common
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
