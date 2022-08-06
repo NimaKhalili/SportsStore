@@ -2,6 +2,8 @@ package com.example.sportsstore.common
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class SportsFragment : Fragment(), SportsView {
     override fun setProgressIndicator(mustShow: Boolean) {
@@ -19,4 +21,11 @@ interface SportsView {
     fun setProgressIndicator(mustShow: Boolean)
 }
 
-abstract class SportsViewModel
+abstract class SportsViewModel : ViewModel() {
+    val compositeDisposable = CompositeDisposable()
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
+    }
+}
