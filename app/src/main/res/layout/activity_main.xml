@@ -15,24 +15,15 @@
             android:layout_height="56dp"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
-        android:id="@+id/fragmentContainer"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.sportsstore.feature.main.MainFragment"/>
+        android:layout_marginBottom="56dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="سلام دنیا!"
-        android:textAppearance="?textAppearanceHeadline6"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationMain"
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
         app:menu="@menu/main_navigation"
