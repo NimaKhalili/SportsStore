@@ -23,8 +23,12 @@ class MainFragment : SportsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel.productsLiveData.observe(this){
+        mainViewModel.productsLiveData.observe(this) {
             Timber.i(it.toString())
+        }
+
+        mainViewModel.progressBarLiveData.observe(this) {
+            setProgressIndicator(it)
         }
     }
 }
