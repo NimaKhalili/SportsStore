@@ -1,11 +1,9 @@
 package com.example.sportsstore.feature.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sportsstore.R
@@ -20,6 +18,8 @@ import timber.log.Timber
 class MainFragment : SportsFragment() {
     val mainViewModel: MainViewModel by viewModel()
     val productListAdapter: ProductListAdapter by inject()
+    val popularProductListAdapter: PopularProductListAdapter by inject()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,9 +35,17 @@ class MainFragment : SportsFragment() {
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         latestProductsRv.adapter = productListAdapter
 
+        popularProductsRv.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        popularProductsRv.adapter = popularProductListAdapter
+
         mainViewModel.productsLiveData.observe(viewLifecycleOwner) {
             Timber.i(it.toString())
             productListAdapter.products = it as ArrayList<Product>
+        }
+
+        mainViewModel.popularProductsLiveLiveData.observe(viewLifecycleOwner) {
+            popularProductListAdapter.products = it as ArrayList<Product>
         }
 
         mainViewModel.progressBarLiveData.observe(viewLifecycleOwner) {

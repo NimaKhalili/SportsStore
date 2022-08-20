@@ -10,6 +10,7 @@ import com.example.sportsstore.data.repo.source.BannerRemoteDataSource
 import com.example.sportsstore.data.repo.source.ProductLocalDataSource
 import com.example.sportsstore.data.repo.source.ProductRemoteDataSource
 import com.example.sportsstore.feature.main.MainViewModel
+import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.main.ProductListAdapter
 import com.example.sportsstore.services.FrescoImageLoadingService
 import com.example.sportsstore.services.ImageLoadingService
@@ -33,6 +34,7 @@ class App : Application() {
             single<ImageLoadingService> { FrescoImageLoadingService() }
             factory<ProductRepository> { ProductRepositoryImpl(ProductRemoteDataSource(get()), ProductLocalDataSource()) }
             factory { ProductListAdapter(get()) }
+            factory { PopularProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
             viewModel { MainViewModel(get(), get()) }
         }
