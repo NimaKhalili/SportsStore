@@ -8,7 +8,7 @@ import io.reactivex.Single
 interface ProductDataSource {
 
     //server database
-    fun getProducts(): Single<List<Product>>
+    fun getProducts(sort:Int): Single<List<Product>>
 
     //local database
     fun getFavoriteProducts(): Single<List<Product>>
