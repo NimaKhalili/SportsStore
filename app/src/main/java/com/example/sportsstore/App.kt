@@ -1,17 +1,14 @@
 package com.example.sportsstore
 
 import android.app.Application
-import com.example.sportsstore.data.repo.BannerRepository
-import com.example.sportsstore.data.repo.BannerRepositoryImpl
-import com.example.sportsstore.data.repo.ProductRepository
-import com.example.sportsstore.data.repo.ProductRepositoryImpl
-import com.example.sportsstore.data.repo.source.BannerDataSource
-import com.example.sportsstore.data.repo.source.BannerRemoteDataSource
-import com.example.sportsstore.data.repo.source.ProductLocalDataSource
-import com.example.sportsstore.data.repo.source.ProductRemoteDataSource
+import android.os.Bundle
+import com.example.sportsstore.data.repo.*
+import com.example.sportsstore.data.repo.source.*
 import com.example.sportsstore.feature.main.MainViewModel
 import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.main.ProductListAdapter
+import com.example.sportsstore.feature.product.ProductDetailViewModel
+import com.example.sportsstore.feature.product.comment.CommentListViewModel
 import com.example.sportsstore.services.FrescoImageLoadingService
 import com.example.sportsstore.services.ImageLoadingService
 import com.example.sportsstore.services.http.ApiService
@@ -36,7 +33,10 @@ class App : Application() {
             factory { ProductListAdapter(get()) }
             factory { PopularProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
+            factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
             viewModel { MainViewModel(get(), get()) }
+            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle, get()) }
+            viewModel { (productId: Int) -> CommentListViewModel(productId, get()) }
         }
 
         startKoin{

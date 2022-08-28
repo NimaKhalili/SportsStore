@@ -2,6 +2,7 @@ package com.example.sportsstore.services.http
 
 import com.example.sportsstore.data.Banner
 import com.example.sportsstore.data.Product
+import com.example.sportsstore.data.Comment
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,6 +16,9 @@ interface ApiService {
 
     @GET("banner/slider")
     fun getBanners():Single<List<Banner>>
+
+    @GET("comment/list")
+    fun getComments(@Query("product_id") productId: Int): Single<List<Comment>>
 }
 
 fun createApiServiceInstance ():ApiService{
