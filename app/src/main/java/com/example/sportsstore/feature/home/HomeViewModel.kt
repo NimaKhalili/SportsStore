@@ -1,4 +1,4 @@
-package com.example.sportsstore.feature.main
+package com.example.sportsstore.feature.home
 
 import androidx.lifecycle.MutableLiveData
 import com.example.sportsstore.common.SportsSingleObserver
@@ -9,7 +9,7 @@ import com.example.sportsstore.data.repo.ProductRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MainViewModel(productRepository: ProductRepository, bannerRepository: BannerRepository) :
+class HomeViewModel(productRepository: ProductRepository, bannerRepository: BannerRepository) :
     SportsViewModel() {
     val productsLiveData = MutableLiveData<List<Product>>()
     val popularProductsLiveLiveData = MutableLiveData<List<Product>>()

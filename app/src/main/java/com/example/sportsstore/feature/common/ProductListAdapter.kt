@@ -1,4 +1,4 @@
-package com.example.sportsstore.feature.main
+package com.example.sportsstore.feature.common
 
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -12,8 +12,16 @@ import com.example.sportsstore.common.implementSpringAnimationTrait
 import com.example.sportsstore.data.Product
 import com.example.sportsstore.services.ImageLoadingService
 import com.example.sportsstore.view.SportsImageView
+import java.lang.IllegalStateException
 
-class ProductListAdapter(val imageLoadingService: ImageLoadingService) :
+const val VIEW_TYPE_ROUND = 0
+const val VIEW_TYPE_SMALL = 1
+const val VIEW_TYPE_LARGE = 2
+
+class ProductListAdapter(
+    var viewType: Int = VIEW_TYPE_ROUND,
+    val imageLoadingService: ImageLoadingService
+) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     var onProductClickListener: OnProductClickListener? = null
@@ -44,9 +52,19 @@ class ProductListAdapter(val imageLoadingService: ImageLoadingService) :
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return viewType
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutResId = when(viewType){
+            VIEW_TYPE_ROUND -> R.layout.item_product
+            VIEW_TYPE_SMALL -> R.layout.item_product_small
+            VIEW_TYPE_LARGE -> R.layout.item_product_large
+            else -> throw IllegalStateException("viewType is not valid")
+        }
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
+            LayoutInflater.from(parent.context).inflate(layoutResId, parent, false)
         )
     }
 
