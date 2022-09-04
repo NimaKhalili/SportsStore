@@ -74,4 +74,5 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:2.6.0'
     implementation("com.tbuonomo:dotsindicator:4.3")
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
+    implementation("org.greenrobot:eventbus:3.3.1")
 }
