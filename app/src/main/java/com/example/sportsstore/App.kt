@@ -3,10 +3,7 @@ package com.example.sportsstore
 import android.app.Application
 import android.os.Bundle
 import com.example.sportsstore.data.repo.*
-import com.example.sportsstore.data.repo.source.BannerRemoteDataSource
-import com.example.sportsstore.data.repo.source.CommentRemoteDataSource
-import com.example.sportsstore.data.repo.source.ProductLocalDataSource
-import com.example.sportsstore.data.repo.source.ProductRemoteDataSource
+import com.example.sportsstore.data.repo.source.*
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
@@ -38,8 +35,9 @@ class App : Application() {
             factory { PopularProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
             factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
+            factory<CartRepository> { CartRepositoryImpl(CartRemoteDataSource(get())) }
             viewModel { HomeViewModel(get(), get()) }
-            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle, get()) }
+            viewModel { (bundle: Bundle) -> ProductDetailViewModel(bundle, get(), get()) }
             viewModel { (productId: Int) -> CommentListViewModel(productId, get()) }
             viewModel { (sort: Int) -> ProductListViewModel(sort, get()) }
         }
