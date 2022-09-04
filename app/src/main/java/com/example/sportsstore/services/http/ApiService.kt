@@ -1,13 +1,18 @@
 package com.example.sportsstore.services.http
 
+import com.example.sportsstore.data.AddToCartResponse
 import com.example.sportsstore.data.Banner
 import com.example.sportsstore.data.Product
 import com.example.sportsstore.data.Comment
+import com.google.gson.JsonObject
 import io.reactivex.Single
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
@@ -19,6 +24,9 @@ interface ApiService {
 
     @GET("comment/list")
     fun getComments(@Query("product_id") productId: Int): Single<List<Comment>>
+
+    @POST("cart/add")
+    fun addToCart(@Body jsonObject: JsonObject):Single<AddToCartResponse>
 }
 
 fun createApiServiceInstance ():ApiService{
