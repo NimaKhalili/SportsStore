@@ -5,17 +5,23 @@ import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sportsstore.R
 import com.example.sportsstore.common.EXTRA_KEY_ID
 import com.example.sportsstore.common.SportsActivity
+import com.example.sportsstore.common.SportsCompletableObserver
 import com.example.sportsstore.common.formatPrice
 import com.example.sportsstore.services.ImageLoadingService
 import com.example.sportsstore.view.scroll.ObservableScrollViewCallbacks
 import com.example.sportsstore.view.scroll.ScrollState
 import com.example.sportsstore.data.Comment
 import com.example.sportsstore.feature.product.comment.CommentListActivity
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_product_detail.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,6 +32,7 @@ class ProductDetailActivity : SportsActivity() {
     val productDetailViewModel: ProductDetailViewModel by viewModel { parametersOf(intent.extras) }
     val imageLoadingService:ImageLoadingService by inject()
     val commentAdapter= CommentAdapter()
+    val compositeDisposable = CompositeDisposable()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
@@ -80,5 +87,21 @@ class ProductDetailActivity : SportsActivity() {
 
             })
         }
+
+        addToCartBtn.setOnClickListener {
+            productDetailViewModel.addToCartBtn()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : SportsCompletableObserver(compositeDisposable){
+                    override fun onComplete() {
+                        showSnackBar(getString(R.string.success_addToCart))
+                    }
+                })
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
     }
 }
