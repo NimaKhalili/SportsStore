@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">SportsStore</string>
+    <string name="app_name">NikeStore</string>
     <string name="home">خانه</string>
     <string name="cart">سبد خرید</string>
     <string name="profile">اطلاعات کاربری</string>
     <string name="latest">جدیدترین</string>
-    <string name="popular">محبوب ترین</string>
     <string name="viewAll">مشاهده همه</string>
     <string name="comments">نظرات کاربران</string>
     <string name="insertComment">ثبت نظر</string>
     <string name="viewAllComments">مشاهده همه نظرات</string>
+    <string name="popular">محبوب ترین</string>
     <string name="productList">لیست محصولات</string>
     <string name="sort">مرتب سازی</string>
     <string name="sortLatest">جدیدترین</string>
@@ -18,11 +18,21 @@
     <string name="addToCart">افزودن به سبد خرید</string>
     <string name="unknown_error">خطای نامشخص</string>
     <string name="success_addToCart">به سبد خرید اضافه شد</string>
-
     <string-array name="sortTitlesArray">
         <item>@string/sortLatest</item>
         <item>@string/sortPopular</item>
         <item>@string/sortPriceHighToLow</item>
         <item>@string/sortPriceLowToHigh</item>
     </string-array>
+
+    <string name="loginScreenTitle">ورود به حساب کاربری</string>
+    <string name="loginTitle">ورود</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمز عبور</string>
+    <string name="signUpHint">حساب کاربری ندارید؟</string>
+    <string name="signUp">ثبت نام</string>
+    <string name="authHint">ایمیل و رمز عبور خود را وارد کنید</string>
+
+    <string name="signUpScreenTitle">ایجاد حساب کاربری</string>
+    <string name="loginHint">قبلا ثبت نام کردید؟</string>
 </resources>
