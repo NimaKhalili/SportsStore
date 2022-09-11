@@ -1,9 +1,6 @@
 package com.example.sportsstore.services.http
 
-import com.example.sportsstore.data.AddToCartResponse
-import com.example.sportsstore.data.Banner
-import com.example.sportsstore.data.Product
-import com.example.sportsstore.data.Comment
+import com.example.sportsstore.data.*
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import org.json.JSONObject
@@ -27,6 +24,12 @@ interface ApiService {
 
     @POST("cart/add")
     fun addToCart(@Body jsonObject: JsonObject):Single<AddToCartResponse>
+
+    @POST("auth/token")
+    fun login(@Body jsonObject: JsonObject):Single<TokenResponse>
+
+    @POST("user/register")
+    fun signUp(@Body jsonObject: JsonObject):Single<MessageResponse>
 }
 
 fun createApiServiceInstance ():ApiService{
