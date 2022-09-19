@@ -107,7 +107,7 @@ interface SportsView {
 
     fun showSnackBar(message:String, duration:Int=Snackbar.LENGTH_SHORT){
         rootView?.let {
-            Snackbar.make(it, message, duration)
+            Snackbar.make(it, message, duration).show()
         }
     }
 }
