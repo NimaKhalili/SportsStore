@@ -3,7 +3,10 @@ package com.example.sportsstore.services.http
 import com.example.sportsstore.data.*
 import com.google.gson.JsonObject
 import io.reactivex.Single
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,13 +33,34 @@ interface ApiService {
 
     @POST("user/register")
     fun signUp(@Body jsonObject: JsonObject):Single<MessageResponse>
+
+    @POST("auth/token")
+    fun refreshToken(@Body jsonObject: JsonObject):Call<TokenResponse>
 }
 
 fun createApiServiceInstance ():ApiService{
+
+    val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor {
+            val oldRequest = it.request()
+            val newRequestBuilder = oldRequest.newBuilder()
+            if (TokenContainer.token != null)
+                newRequestBuilder.addHeader("Authorization", "Bearer ${TokenContainer.token}")
+
+            newRequestBuilder.addHeader("Accept", "application/json")
+            newRequestBuilder.method(oldRequest.method, oldRequest.body)
+            return@addInterceptor it.proceed(newRequestBuilder.build())
+        }
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            setLevel(HttpLoggingInterceptor.Level.BODY)
+        })
+        .build()
+
     val retrofit=Retrofit.Builder()
         .baseUrl("http://expertdevelopers.ir/api/v1/")
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
         .build()
     return retrofit.create(ApiService::class.java)
 }
