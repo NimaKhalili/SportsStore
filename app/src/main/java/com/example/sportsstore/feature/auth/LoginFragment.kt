@@ -5,20 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.sportsstore.R
 import com.example.sportsstore.common.SportsCompletableObserver
-import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.emailEt
-import kotlinx.android.synthetic.main.fragment_login.passwordEt
-import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment: Fragment() {
-    val viewModel:AuthViewModel by viewModels()
+    val viewModel:AuthViewModel by viewModel()
     val compositeDisposable = CompositeDisposable()
     override fun onCreateView(
         inflater: LayoutInflater,
