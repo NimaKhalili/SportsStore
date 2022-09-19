@@ -9,7 +9,7 @@ class AuthViewModel(private val userRepository: UserRepository):SportsViewModel(
     fun login(email: String, password: String): Completable{
         progressBarLiveData.value = true
         return userRepository.login(email, password).doFinally {
-            progressBarLiveData.value = false
+            progressBarLiveData.postValue(false)
         }
     }
 
