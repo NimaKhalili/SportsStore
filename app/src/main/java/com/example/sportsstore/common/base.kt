@@ -30,8 +30,8 @@ abstract class SportsFragment : Fragment(), SportsView {
     override val viewContext: Context?
         get() = context
 
-    override fun onStart() {
-        super.onStart()
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         EventBus.getDefault().register(this)
     }
 
