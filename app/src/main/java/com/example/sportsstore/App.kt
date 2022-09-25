@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.sportsstore.data.repo.*
 import com.example.sportsstore.data.repo.source.*
 import com.example.sportsstore.feature.auth.AuthViewModel
+import com.example.sportsstore.feature.cart.CartViewModel
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
@@ -57,6 +58,7 @@ class App : Application() {
             viewModel { (productId: Int) -> CommentListViewModel(productId, get()) }
             viewModel { (sort: Int) -> ProductListViewModel(sort, get()) }
             viewModel { AuthViewModel(get()) }
+            viewModel { CartViewModel(get()) }
         }
 
         startKoin{
