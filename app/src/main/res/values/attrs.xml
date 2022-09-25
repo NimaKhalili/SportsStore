@@ -2,6 +2,7 @@
 <resources>
 
     <attr name="dividerColor" format="color" />
+    <attr name="windowBackgroundColorSub" format="color"/>
     <declare-styleable name="SportsToolbar">
         <attr name="sports_title" format="string" />
     </declare-styleable>
