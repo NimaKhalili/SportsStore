@@ -1,23 +1,24 @@
 package com.example.sportsstore.feature.cart
 
 import androidx.lifecycle.MutableLiveData
+import com.example.sportsstore.R
 import com.example.sportsstore.common.SportsSingleObserver
 import com.example.sportsstore.common.SportsViewModel
 import com.example.sportsstore.common.asyncNetworkRequest
-import com.example.sportsstore.data.CartItem
-import com.example.sportsstore.data.CartResponse
-import com.example.sportsstore.data.PurchaseDetail
-import com.example.sportsstore.data.TokenContainer
+import com.example.sportsstore.data.*
 import com.example.sportsstore.data.repo.CartRepository
 import io.reactivex.Completable
+import timber.log.Timber
 
 class CartViewModel(val cartRepository: CartRepository) : SportsViewModel() {
     val cartItemsLiveData = MutableLiveData<List<CartItem>>()
     val purchaseDetailLiveData = MutableLiveData<PurchaseDetail>()
+    val emptyStateLiveData = MutableLiveData<EmptyState>()
 
     private fun getCartItems() {
         if (!TokenContainer.token.isNullOrEmpty()) {
             progressBarLiveData.value = true
+            emptyStateLiveData.value = EmptyState(false)
             cartRepository.get()
                 .asyncNetworkRequest()
                 .doFinally { progressBarLiveData.value = false }
@@ -28,25 +29,26 @@ class CartViewModel(val cartRepository: CartRepository) : SportsViewModel() {
                             purchaseDetailLiveData.value =
                                 PurchaseDetail(t.total_price, t.shipping_cost, t.payable_price)
                         }
+                        else
+                            emptyStateLiveData.value = EmptyState(true, R.string.cartEmptyState)
                     }
                 })
-        }
+        } else
+            emptyStateLiveData.value = EmptyState(true, R.string.cartEmptyStateLoginRequired, true)
     }
 
-    //chera Completable : chon view faghat ehtiaj dare bedone in amaliat remove anjam shod ya nashod
-    //va dalile inke ehtiaj dare faghat bedone in hast ke :
-    //agar amaliat anjam shod on iteme ro az adapter bekhaym hazf bokonim
     fun removeItemFromCart(cartItem: CartItem): Completable {
         return cartRepository.remove(cartItem.cart_item_id)
             .doAfterSuccess {
+                Timber.i("Cart Items Counts After Remove -> ${cartItemsLiveData.value?.size}")
                 calculateAndPublishPurchaseDetail()
+                cartItemsLiveData.value?.let {
+                    if (it.isEmpty())
+                        emptyStateLiveData.postValue(EmptyState(true, R.string.cartEmptyState, false))
+                }
             }.ignoreElement()
     }
 
-    //chera ignoreElement : chon natije cartRepository.remove az noe Single ast ama inja Completable
-    //ast bara tabdile be Completable az ignoreElement estefade mikonim
-
-    //2ta method paeen dar samte server nistand va haminja meghdareshon ro change mikonim
     fun increaseCartItemCount(cartItem: CartItem): Completable =
         cartRepository.changeCount(cartItem.cart_item_id, ++cartItem.count)
             .doAfterSuccess {
