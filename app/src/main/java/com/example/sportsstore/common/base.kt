@@ -2,6 +2,7 @@ package com.example.sportsstore.common
 
 import android.content.Context
 import android.content.Intent
+import android.content.LocusId
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.LayoutInflater
@@ -45,13 +46,13 @@ abstract class SportsActivity : AppCompatActivity(), SportsView {
     override val rootView: CoordinatorLayout?
         get() {
             val viewGroup = window.decorView.findViewById(android.R.id.content) as ViewGroup
-            if (viewGroup !is CoordinatorLayout){
+            if (viewGroup !is CoordinatorLayout) {
                 viewGroup.children.forEach {
                     if (it is CoordinatorLayout)
                         return it
                 }
                 throw IllegalStateException("RootView must be instance of CoordinatorLayout")
-            }else{
+            } else {
                 return viewGroup
             }
         }
@@ -109,6 +110,21 @@ interface SportsView {
         rootView?.let {
             Snackbar.make(it, message, duration).show()
         }
+    }
+
+    fun showEmptyState(layoutResId: Int): View? {
+        rootView?.let {
+            viewContext?.let { context ->
+                var emptyState = it.findViewById<View>(R.id.emptyStateRootView)
+                if (emptyState == null) {
+                    emptyState = LayoutInflater.from(context).inflate(layoutResId, it, false)
+                    it.addView(emptyState)
+                }
+                emptyState.visibility = View.VISIBLE
+                return emptyState
+            }
+        }
+        return null
     }
 }
 
