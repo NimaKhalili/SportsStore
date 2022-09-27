@@ -12,12 +12,16 @@ import com.example.sportsstore.common.EXTRA_KEY_DATA
 import com.example.sportsstore.common.SportsCompletableObserver
 import com.example.sportsstore.common.SportsFragment
 import com.example.sportsstore.data.CartItem
+import com.example.sportsstore.feature.auth.AuthActivity
 import com.example.sportsstore.feature.product.ProductDetailActivity
 import com.example.sportsstore.services.ImageLoadingService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_product_list.view.*
 import kotlinx.android.synthetic.main.fragment_cart.*
+import kotlinx.android.synthetic.main.view_cart_empty_state.*
+import kotlinx.android.synthetic.main.view_cart_empty_state.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -51,8 +55,23 @@ class CartFragment : SportsFragment(), CartItemAdapter.CartItemViewCallBacks {
         viewModel.purchaseDetailLiveData.observe(viewLifecycleOwner){
             cartItemAdapter?.let { adapter ->
                 adapter.purchaseDetail = it
-                adapter.notifyItemChanged(adapter.cartItems.size)//chon mikhaym akharin item ro biaym notify konimesh ta bedonim purchaseDetail taghir karde ast
+                adapter.notifyItemChanged(adapter.cartItems.size)
             }
+        }
+
+        viewModel.emptyStateLiveData.observe(viewLifecycleOwner){
+            if (it.mustShow){
+                val emptyState = showEmptyState(R.layout.view_cart_empty_state)
+                emptyState?.let { view ->
+                    emptyState.emptyStateMessageTv.text = getString(it.messageResId)
+                    emptyState.emptyStateCtaBtn.visibility = if(it.mustShowCallToActionButton) View.VISIBLE else View.GONE
+                    view.emptyStateCtaBtn.setOnClickListener{
+                        startActivity(Intent(requireContext(), AuthActivity::class.java))
+                    }
+                }
+            }
+            else
+                emptyStateRootView?.visibility = View.GONE
         }
     }
 
