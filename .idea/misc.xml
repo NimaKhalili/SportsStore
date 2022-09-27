@@ -21,6 +21,7 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_round_insert_comment_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_search.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_sort.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_undraw_empty_cart.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_user.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_view_type_large.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_auth.xml" value="0.1796875" />
@@ -40,6 +41,7 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_product_large.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_product_small.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_purchase_details.xml" value="0.3333333333333333" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_cart_empty_state.xml" value="0.13425925925925927" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_loading.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_toolbar.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/menu/main_navigation.xml" value="0.16666666666666666" />
