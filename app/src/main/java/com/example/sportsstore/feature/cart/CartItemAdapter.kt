@@ -18,7 +18,7 @@ const val VIEW_TYPE_CART_ITEM = 0
 const val VIEW_TYPE_PURCHASE_DETAIL = 1
 
 class CartItemAdapter(
-    val cartItems: MutableList<CartItem>,//Mutalbe list baraye in hast ke betonim rosh taghir ijad bokonim
+    val cartItems: MutableList<CartItem>,
     val imageLoadingService: ImageLoadingService,
     val cartItemViewCallBacks: CartItemViewCallBacks
 ) :
