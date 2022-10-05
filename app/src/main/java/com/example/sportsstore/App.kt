@@ -10,6 +10,7 @@ import com.example.sportsstore.feature.cart.CartViewModel
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
+import com.example.sportsstore.feature.main.MainViewModel
 import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.product.ProductDetailViewModel
 import com.example.sportsstore.feature.product.comment.CommentListViewModel
@@ -59,6 +60,7 @@ class App : Application() {
             viewModel { (sort: Int) -> ProductListViewModel(sort, get()) }
             viewModel { AuthViewModel(get()) }
             viewModel { CartViewModel(get()) }
+            viewModel { MainViewModel(get()) }
         }
 
         startKoin{
