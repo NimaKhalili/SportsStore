@@ -60,8 +60,8 @@ abstract class SportsActivity : AppCompatActivity(), SportsView {
     override val viewContext: Context?
         get() = this
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         EventBus.getDefault().register(this)
     }
 
