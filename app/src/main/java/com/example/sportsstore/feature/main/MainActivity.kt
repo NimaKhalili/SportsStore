@@ -66,8 +66,7 @@ class MainActivity : SportsActivity() {
     fun onCartItemsCountChangeEvent(cartItemCount: CartItemCount){
         val badge = bottomNavigationMain.getOrCreateBadge(R.id.cart)
         badge.badgeGravity = BadgeDrawable.BOTTOM_START
-        badge.backgroundColor = MaterialColors.getColor(bottomNavigationMain,
-            com.google.android.material.R.attr.colorPrimary)
+        badge.backgroundColor = MaterialColors.getColor(bottomNavigationMain, com.google.android.material.R.attr.colorPrimary)
         badge.number = cartItemCount.count
         badge.verticalOffset = convertDpToPixel(10f, this).toInt()
         badge.isVisible = cartItemCount.count > 0
