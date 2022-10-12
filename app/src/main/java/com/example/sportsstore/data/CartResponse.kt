@@ -1,5 +1,8 @@
 package com.example.sportsstore.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 
 data class CartResponse(
     val cart_items: List<CartItem>,
@@ -8,4 +11,6 @@ data class CartResponse(
     val total_price: Int
 )
 
-data class PurchaseDetail(var totalPrice: Int, var shipping_cost: Int, var payable_price: Int)
+@Parcelize
+data class PurchaseDetail(var totalPrice: Int, var shipping_cost: Int, var payable_price: Int) :
+    Parcelable
