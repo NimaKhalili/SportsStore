@@ -14,11 +14,11 @@ import com.example.sportsstore.common.SportsFragment
 import com.example.sportsstore.data.CartItem
 import com.example.sportsstore.feature.auth.AuthActivity
 import com.example.sportsstore.feature.product.ProductDetailActivity
+import com.example.sportsstore.feature.shipping.ShippingActivity
 import com.example.sportsstore.services.ImageLoadingService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_product_list.view.*
 import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.view_cart_empty_state.*
 import kotlinx.android.synthetic.main.view_cart_empty_state.view.*
@@ -72,6 +72,12 @@ class CartFragment : SportsFragment(), CartItemAdapter.CartItemViewCallBacks {
             }
             else
                 emptyStateRootView?.visibility = View.GONE
+        }
+
+        payBtn.setOnClickListener{
+            startActivity(Intent(requireContext(), ShippingActivity::class.java).apply {
+                putExtra(EXTRA_KEY_DATA, viewModel.purchaseDetailLiveData.value)
+            })
         }
     }
 
