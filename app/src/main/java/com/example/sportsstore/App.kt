@@ -4,9 +4,13 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.os.Bundle
 import com.example.sportsstore.data.repo.*
+import com.example.sportsstore.data.repo.order.OrderRemoteDataSource
+import com.example.sportsstore.data.repo.order.OrderRepository
+import com.example.sportsstore.data.repo.order.OrderRepositoryImpl
 import com.example.sportsstore.data.repo.source.*
 import com.example.sportsstore.feature.auth.AuthViewModel
 import com.example.sportsstore.feature.cart.CartViewModel
+import com.example.sportsstore.feature.checkout.CheckoutViewModel
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
@@ -14,6 +18,7 @@ import com.example.sportsstore.feature.main.MainViewModel
 import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.product.ProductDetailViewModel
 import com.example.sportsstore.feature.product.comment.CommentListViewModel
+import com.example.sportsstore.feature.shipping.ShippingViewModel
 import com.example.sportsstore.services.FrescoImageLoadingService
 import com.example.sportsstore.services.ImageLoadingService
 import com.example.sportsstore.services.http.ApiService
@@ -49,6 +54,8 @@ class App : Application() {
                     UserRemoteDataSource(get())
                 )
             }
+            single<OrderRepository> { OrderRepositoryImpl(OrderRemoteDataSource(get())) }
+
             factory { (viewType: Int) -> ProductListAdapter(viewType, get()) }
             factory { PopularProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
@@ -61,6 +68,8 @@ class App : Application() {
             viewModel { AuthViewModel(get()) }
             viewModel { CartViewModel(get()) }
             viewModel { MainViewModel(get()) }
+            viewModel { ShippingViewModel(get()) }
+            viewModel { (orderId: Int) -> CheckoutViewModel(orderId, get()) }
         }
 
         startKoin{
