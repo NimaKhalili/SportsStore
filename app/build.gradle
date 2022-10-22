@@ -71,9 +71,11 @@ dependencies {
     implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
     implementation 'com.facebook.fresco:fresco:2.6.0'
     implementation("com.tbuonomo:dotsindicator:4.3")
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     implementation("org.greenrobot:eventbus:3.3.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation "androidx.browser:browser:1.4.0"
 }
