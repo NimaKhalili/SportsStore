@@ -52,8 +52,8 @@ interface ApiService {
     @POST("order/submit")
     fun submitOrder(@Body jsonObject: JsonObject):Single<SubmitOrderResult>
 
-    @GET("order/checkOut")
-    fun checkOut(@Query("order_id") orderId:Int)
+    @GET("order/checkout")
+    fun checkOut(@Query("order_id") orderId:Int) : Single<Checkout>
 }
 
 fun createApiServiceInstance(): ApiService {
