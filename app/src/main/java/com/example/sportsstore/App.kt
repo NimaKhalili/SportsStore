@@ -18,6 +18,7 @@ import com.example.sportsstore.feature.main.MainViewModel
 import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.product.ProductDetailViewModel
 import com.example.sportsstore.feature.product.comment.CommentListViewModel
+import com.example.sportsstore.feature.profile.ProfileViewModel
 import com.example.sportsstore.feature.shipping.ShippingViewModel
 import com.example.sportsstore.services.FrescoImageLoadingService
 import com.example.sportsstore.services.ImageLoadingService
@@ -70,6 +71,7 @@ class App : Application() {
             viewModel { MainViewModel(get()) }
             viewModel { ShippingViewModel(get()) }
             viewModel { (orderId: Int) -> CheckoutViewModel(orderId, get()) }
+            viewModel { ProfileViewModel(get()) }
         }
 
         startKoin{
