@@ -13,17 +13,22 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_eye.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_eye_off.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites_20dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites_24dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_grid.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_nike_logo.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_order_history.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_plus_square.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_round_insert_comment_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_search.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_sign_in.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_sign_out.xml" value="0.115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_sort.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_undraw_empty_cart.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_user.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_view_type_large.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/shape_divider.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_auth.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_check_out.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_comment_list.xml" value="0.1796875" />
