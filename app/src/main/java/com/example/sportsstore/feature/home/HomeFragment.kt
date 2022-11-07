@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 
-class HomeFragment : SportsFragment(), ProductListAdapter.OnProductClickListener {
+class HomeFragment : SportsFragment(), ProductListAdapter.ProductEventListener {
     val homeViewModel: HomeViewModel by viewModel()
     val productListAdapter: ProductListAdapter by inject { parametersOf(VIEW_TYPE_ROUND) }
     val popularProductListAdapter: PopularProductListAdapter by inject()
@@ -44,7 +44,7 @@ class HomeFragment : SportsFragment(), ProductListAdapter.OnProductClickListener
         latestProductsRv.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         latestProductsRv.adapter = productListAdapter
-        productListAdapter.onProductClickListener = this
+        productListAdapter.productEventListener = this
 
         popularProductsRv.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -95,5 +95,9 @@ class HomeFragment : SportsFragment(), ProductListAdapter.OnProductClickListener
         startActivity(Intent(requireContext(), ProductDetailActivity::class.java).apply {
             putExtra(EXTRA_KEY_DATA, product)
         })
+    }
+
+    override fun onFavoriteBtnClick(product: Product) {
+        homeViewModel.addProductToFavorites(product)
     }
 }
