@@ -12,13 +12,16 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_cart.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_eye.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_eye_off.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorite_fill.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites_20dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_favorites_24dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_grid.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_nike_logo.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_no_data.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_order_history.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_outline_info_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_plus_square.xml" value="0.1115" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_round_insert_comment_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/drawable/ic_search.xml" value="0.1115" />
@@ -32,6 +35,7 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_auth.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_check_out.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_comment_list.xml" value="0.1796875" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_favorite_products.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_product_detail.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/activity_product_list.xml" value="0.2141863699582754" />
@@ -45,11 +49,13 @@
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/fragment_sign_up.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_cart.xml" value="0.4164904862579281" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_comment.xml" value="0.3333333333333333" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_favorite_product.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_product.xml" value="0.4466666666666667" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_product_large.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_product_small.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/item_purchase_details.xml" value="0.3333333333333333" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_cart_empty_state.xml" value="0.13425925925925927" />
+        <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_default_empty_state.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_loading.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/layout/view_toolbar.xml" value="0.1796875" />
         <entry key="..\:/AndroidStudioProjects/SportsStore/app/src/main/res/menu/main_navigation.xml" value="0.16666666666666666" />
