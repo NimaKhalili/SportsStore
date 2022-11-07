@@ -11,6 +11,7 @@ import com.example.sportsstore.data.Product
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.common.VIEW_TYPE_LARGE
 import com.example.sportsstore.feature.common.VIEW_TYPE_SMALL
+import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.product.ProductDetailActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_product_list.*
@@ -20,6 +21,7 @@ import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 
 class ProductListActivity : SportsActivity(), ProductListAdapter.ProductEventListener {
+    val homeViewModel: HomeViewModel by viewModel()
     val viewModel: ProductListViewModel by viewModel {
         parametersOf(
             intent.extras!!.getInt(
@@ -87,6 +89,6 @@ class ProductListActivity : SportsActivity(), ProductListAdapter.ProductEventLis
     }
 
     override fun onFavoriteBtnClick(product: Product) {
-
+        homeViewModel.addProductToFavorites(product)
     }
 }
