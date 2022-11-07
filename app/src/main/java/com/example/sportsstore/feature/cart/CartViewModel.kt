@@ -68,9 +68,7 @@ class CartViewModel(val cartRepository: CartRepository) : SportsViewModel() {
                 cartItemCount?.let {
                     it.count += 1
                     EventBus.getDefault().postSticky(it)
-                    Log.i("EventBUStest", "increaseCartItemCountINSIDE: " + it)
                 }
-                Log.i("EventBUStest", "increaseCartItemCountOUTSIDE: " + cartItemCount)
             }
             .ignoreElement()
 
