@@ -1,6 +1,7 @@
 package com.example.sportsstore.feature.home
 
 import androidx.lifecycle.MutableLiveData
+import com.example.sportsstore.common.SportsCompletableObserver
 import com.example.sportsstore.common.SportsSingleObserver
 import com.example.sportsstore.common.SportsViewModel
 import com.example.sportsstore.data.*
@@ -9,7 +10,7 @@ import com.example.sportsstore.data.repo.ProductRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class HomeViewModel(productRepository: ProductRepository, bannerRepository: BannerRepository) :
+class HomeViewModel(private val productRepository: ProductRepository, bannerRepository: BannerRepository) :
     SportsViewModel() {
     val productsLiveData = MutableLiveData<List<Product>>()
     val popularProductsLiveLiveData = MutableLiveData<List<Product>>()
@@ -44,5 +45,24 @@ class HomeViewModel(productRepository: ProductRepository, bannerRepository: Bann
                     bannerLiveData.value = t
                 }
             })
+    }
+
+    fun addProductToFavorites(product: Product){
+        if(product.isFavorite)
+            productRepository.deleteFromFavorites(product)
+                .subscribeOn(Schedulers.io())
+                .subscribe(object :SportsCompletableObserver(compositeDisposable){
+                    override fun onComplete() {
+                        product.isFavorite = false
+                    }
+                })
+        else
+            productRepository.addToFavorites(product)
+                .subscribeOn(Schedulers.io())
+                .subscribe(object :SportsCompletableObserver(compositeDisposable){
+                    override fun onComplete() {
+                        product.isFavorite = true
+                    }
+                })
     }
 }
