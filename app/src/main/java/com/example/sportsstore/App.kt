@@ -18,7 +18,6 @@ import com.example.sportsstore.feature.favorites.FavoriteProductsViewModel
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
 import com.example.sportsstore.feature.main.MainViewModel
-import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.product.ProductDetailViewModel
 import com.example.sportsstore.feature.product.comment.CommentListViewModel
 import com.example.sportsstore.feature.profile.ProfileViewModel
@@ -62,7 +61,6 @@ class App : Application() {
             single<OrderRepository> { OrderRepositoryImpl(OrderRemoteDataSource(get())) }
 
             factory { (viewType: Int) -> ProductListAdapter(viewType, get()) }
-            factory { PopularProductListAdapter(get()) }
             factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
             factory<CommentRepository> { CommentRepositoryImpl(CommentRemoteDataSource(get())) }
             factory<CartRepository> { CartRepositoryImpl(CartRemoteDataSource(get())) }

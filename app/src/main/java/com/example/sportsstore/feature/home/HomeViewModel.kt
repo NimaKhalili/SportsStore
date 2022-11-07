@@ -13,7 +13,6 @@ import io.reactivex.schedulers.Schedulers
 class HomeViewModel(private val productRepository: ProductRepository, bannerRepository: BannerRepository) :
     SportsViewModel() {
     val productsLiveData = MutableLiveData<List<Product>>()
-    val popularProductsLiveLiveData = MutableLiveData<List<Product>>()
     val bannerLiveData = MutableLiveData<List<Banner>>()
 
     init {
@@ -21,19 +20,10 @@ class HomeViewModel(private val productRepository: ProductRepository, bannerRepo
         productRepository.getProducts(SORT_LATEST)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SportsSingleObserver<List<Product>>(compositeDisposable){
-                override fun onSuccess(t: List<Product>) {
-                    productsLiveData.value = t
-                }
-            })
-
-        productRepository.getProducts(SORT_POPULAR)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .doFinally { progressBarLiveData.value = false }
             .subscribe(object : SportsSingleObserver<List<Product>>(compositeDisposable){
                 override fun onSuccess(t: List<Product>) {
-                    popularProductsLiveLiveData.value = t
+                    productsLiveData.value = t
                 }
             })
 

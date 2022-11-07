@@ -13,12 +13,10 @@ import com.example.sportsstore.common.SportsFragment
 import com.example.sportsstore.common.convertDpToPixel
 import com.example.sportsstore.data.Product
 import com.example.sportsstore.data.SORT_LATEST
-import com.example.sportsstore.data.SORT_POPULAR
 import com.example.sportsstore.feature.common.ProductListAdapter
 import com.example.sportsstore.feature.common.VIEW_TYPE_ROUND
 import com.example.sportsstore.feature.list.ProductListActivity
 import com.example.sportsstore.feature.main.BannerSliderAdapter
-import com.example.sportsstore.feature.main.PopularProductListAdapter
 import com.example.sportsstore.feature.product.ProductDetailActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.inject
@@ -29,7 +27,6 @@ import timber.log.Timber
 class HomeFragment : SportsFragment(), ProductListAdapter.ProductEventListener {
     val homeViewModel: HomeViewModel by viewModel()
     val productListAdapter: ProductListAdapter by inject { parametersOf(VIEW_TYPE_ROUND) }
-    val popularProductListAdapter: PopularProductListAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,10 +43,6 @@ class HomeFragment : SportsFragment(), ProductListAdapter.ProductEventListener {
         latestProductsRv.adapter = productListAdapter
         productListAdapter.productEventListener = this
 
-        popularProductsRv.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        popularProductsRv.adapter = popularProductListAdapter
-
         homeViewModel.productsLiveData.observe(viewLifecycleOwner) {
             Timber.i(it.toString())
             productListAdapter.products = it as ArrayList<Product>
@@ -59,16 +52,6 @@ class HomeFragment : SportsFragment(), ProductListAdapter.ProductEventListener {
             startActivity(Intent(requireContext(), ProductListActivity::class.java).apply {
                 putExtra(EXTRA_KEY_DATA, SORT_LATEST)
             })
-        }
-
-        viewPopularProductsBtn.setOnClickListener{
-            startActivity(Intent(requireContext(), ProductListActivity::class.java).apply {
-                putExtra(EXTRA_KEY_DATA, SORT_POPULAR)
-            })
-        }
-
-        homeViewModel.popularProductsLiveLiveData.observe(viewLifecycleOwner) {
-            popularProductListAdapter.products = it as ArrayList<Product>
         }
 
         homeViewModel.progressBarLiveData.observe(viewLifecycleOwner) {
