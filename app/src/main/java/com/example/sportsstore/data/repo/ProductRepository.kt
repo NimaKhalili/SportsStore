@@ -4,8 +4,6 @@ import com.example.sportsstore.data.Product
 import io.reactivex.Completable
 import io.reactivex.Single
 
-//makhzane data
-//in makhzan baraye memarie mvvm ast ke in repository viewmodel azash etelaat mikhad va aslan ham kari nadare ke az koja miad faghat darkhast mide va repository behesh mide
 interface ProductRepository {
 
     //server database
@@ -14,7 +12,7 @@ interface ProductRepository {
     //local database
     fun getFavoriteProducts():Single<List<Product>>
 
-    fun addToFavorites():Completable
+    fun addToFavorites(product: Product):Completable
 
-    fun deleteFromFavorites():Completable
+    fun deleteFromFavorites(product: Product):Completable
 }
