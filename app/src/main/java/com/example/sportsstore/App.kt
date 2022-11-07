@@ -3,6 +3,8 @@ package com.example.sportsstore
 import android.app.Application
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.room.Room
+import com.example.sportsstore.data.db.AppDatabase
 import com.example.sportsstore.data.repo.*
 import com.example.sportsstore.data.repo.order.OrderRemoteDataSource
 import com.example.sportsstore.data.repo.order.OrderRepository
@@ -12,6 +14,7 @@ import com.example.sportsstore.feature.auth.AuthViewModel
 import com.example.sportsstore.feature.cart.CartViewModel
 import com.example.sportsstore.feature.checkout.CheckoutViewModel
 import com.example.sportsstore.feature.common.ProductListAdapter
+import com.example.sportsstore.feature.favorites.FavoriteProductsViewModel
 import com.example.sportsstore.feature.home.HomeViewModel
 import com.example.sportsstore.feature.list.ProductListViewModel
 import com.example.sportsstore.feature.main.MainViewModel
@@ -41,7 +44,8 @@ class App : Application() {
         val myModules= module {
             single<ApiService> { createApiServiceInstance() }
             single<ImageLoadingService> { FrescoImageLoadingService() }
-            factory<ProductRepository> { ProductRepositoryImpl(ProductRemoteDataSource(get()), ProductLocalDataSource()) }
+            single { Room.databaseBuilder(this@App, AppDatabase::class.java, "db_app").build() }
+            factory<ProductRepository> { ProductRepositoryImpl(ProductRemoteDataSource(get()), get<AppDatabase>().productDap()) }
             single<SharedPreferences> {
                 this@App.getSharedPreferences(
                     "app_settings",
@@ -72,6 +76,7 @@ class App : Application() {
             viewModel { ShippingViewModel(get()) }
             viewModel { (orderId: Int) -> CheckoutViewModel(orderId, get()) }
             viewModel { ProfileViewModel(get()) }
+            viewModel { FavoriteProductsViewModel(get()) }
         }
 
         startKoin{
