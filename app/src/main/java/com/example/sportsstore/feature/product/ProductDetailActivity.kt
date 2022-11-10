@@ -2,10 +2,8 @@ package com.example.sportsstore.feature.product
 
 import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sportsstore.R
@@ -13,12 +11,11 @@ import com.example.sportsstore.common.EXTRA_KEY_ID
 import com.example.sportsstore.common.SportsActivity
 import com.example.sportsstore.common.SportsCompletableObserver
 import com.example.sportsstore.common.formatPrice
+import com.example.sportsstore.data.Comment
+import com.example.sportsstore.feature.product.comment.CommentListActivity
 import com.example.sportsstore.services.ImageLoadingService
 import com.example.sportsstore.view.scroll.ObservableScrollViewCallbacks
 import com.example.sportsstore.view.scroll.ScrollState
-import com.example.sportsstore.data.Comment
-import com.example.sportsstore.feature.product.comment.CommentListActivity
-import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
