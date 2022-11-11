@@ -13,7 +13,6 @@ This app will be able to get product list from server and user can add product t
 * [EventBus](#general-infoa)
 * [Solid](#general-infoa)
 
+![image](https://user-images.githubusercontent.com/33953085/201276140-cd747fec-f48b-493e-a8c3-cc64206ffbee.png)
+![image](https://user-images.githubusercontent.com/33953085/201276497-3d0b9dc9-283f-4daf-b66c-6db46c91021c.png)
 
-![1](https://user-images.githubusercontent.com/33953085/201085227-df9de90f-1a3b-4800-8b3b-19b289c69f88.jpg)
-![2](https://user-images.githubusercontent.com/33953085/201085701-50970f77-3501-4330-b15f-8b2396985e2e.jpg)
-![3](https://user-images.githubusercontent.com/33953085/201084762-05d4f6a1-dee6-4618-8fe6-acf875bbb3de.jpg)
